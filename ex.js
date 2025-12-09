@@ -10,19 +10,44 @@ const users = [
   { id: 9, name: "Ibrahim", age: 27, city: "Casablanca", score: 55 },
   { id: 10, name: "Jade", age: 24, city: "Agadir", score: 48 }
 ];
-// 1. Trier les utilisateurs par âge (croissant)
-// A
-const sorted = users.sort((a, b) => a.age - b.age);
+// // 1. Trier les utilisateurs par âge (croissant)
+// // A
+// const sorted = users.sort((a, b) => a.age - b.age);
+// console.log(sorted);
+// // B 
+// function trierAge(users){
+//     let copie =[];
+//     for(let i = 0 ; i < users.length; i++){
+//         copie[i] = users[i];
+//     }
+//       for (let i = 0 ; i < copie.length; i++){
+//         for (let j = 0 ; j < copie.length ; j++){
+//             if (copie[j] > copie[j + 1]){
+//                 let temps = copie[j];
+//                 copie[j] = copie[j + 1];
+//                 copie[j + 1]= temps;
+//             }
+//         }
+//       }
+//       return copie;
+// }
+// console.log(trierAge(users))
+
+// 2. Trier par score (décroissant)
+// A 
+
+const sorted = users.sort((a, b) => b.age - a.age);
 console.log(sorted);
-// B 
-function trierAge(users){
+ 
+// b 
+function trierAge2(users){
     let copie =[];
     for(let i = 0 ; i < users.length; i++){
         copie[i] = users[i];
     }
       for (let i = 0 ; i < copie.length; i++){
         for (let j = 0 ; j < copie.length ; j++){
-            if (copie[j] > copie[j + 1]){
+            if (copie[j] < copie[j + 1]){
                 let temps = copie[j];
                 copie[j] = copie[j + 1];
                 copie[j + 1]= temps;
@@ -31,4 +56,5 @@ function trierAge(users){
       }
       return copie;
 }
-console.log(trierAge(users))
+console.log(trierAge2(users))
+
