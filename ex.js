@@ -12,17 +12,45 @@ const users = [
 ];
 // // 1. Trier les utilisateurs par âge (croissant)
 // // A
-// const sorted = users.sort((a, b) => a.age - b.age);
-// console.log(sorted);
+// const sorted1 = users.sort((a, b) => a.age - b.age);
+// console.log(sorted1);
 // // B 
-// function trierAge(users){
+// function trierAge(users) {
+//     let copie = [];
+//     for (let i = 0; i < users.length; i++) {
+//         copie[i] = users[i];
+//     }
+
+//     for (let i = 0; i < copie.length ; i++) {        
+//         for (let j = 0; j < copie.length - 1; j++) { 
+//             if (copie[j].age > copie[j + 1].age) {
+//                 let temp = copie[j];
+//                 copie[j] = copie[j + 1];
+//                 copie[j + 1] = temp;
+//             }
+//         }
+//     }
+
+//     return copie;
+// }
+// console.log(trierAge(users))
+
+
+// // 2. Trier par score (décroissant)
+// // A 
+
+// const sorted2 = users.sort((a, b) => b.score - a.score);
+// console.log(sorted2);
+ 
+// // b 
+// function trierAge2(users){
 //     let copie =[];
 //     for(let i = 0 ; i < users.length; i++){
 //         copie[i] = users[i];
 //     }
 //       for (let i = 0 ; i < copie.length; i++){
-//         for (let j = 0 ; j < copie.length ; j++){
-//             if (copie[j] > copie[j + 1]){
+//         for (let j = 0 ; j < copie.length - 1 ; j++){
+//             if (copie[j].score < copie[j + 1].score){
 //                 let temps = copie[j];
 //                 copie[j] = copie[j + 1];
 //                 copie[j + 1]= temps;
@@ -31,30 +59,32 @@ const users = [
 //       }
 //       return copie;
 // }
-// console.log(trierAge(users))
+// console.log(trierAge2(users))
 
-// 2. Trier par score (décroissant)
+// 3. Ajouter une propriété status: "active" à chaque utilisateur
 // A 
 
-const sorted = users.sort((a, b) => b.age - a.age);
-console.log(sorted);
- 
-// b 
-function trierAge2(users){
-    let copie =[];
-    for(let i = 0 ; i < users.length; i++){
-        copie[i] = users[i];
+const status1 = users.map(user => ({...user , status : "Active"}));
+console.log(status1)
+
+// B 
+
+function ajouterstatus(users){ 
+    const result =[];
+    for (let i= 0; i < users.length; i++ ){
+        let newUser = {};
+        newUser.id = users[i].id;
+        newUser.name = users[i].name;
+        newUser.age = users[i].age;
+        newUser.city = users[i].city;
+        newUser.score = users[i].score;
+        newUser.status = "Active";
+        result[i] = newUser;
     }
-      for (let i = 0 ; i < copie.length; i++){
-        for (let j = 0 ; j < copie.length ; j++){
-            if (copie[j] < copie[j + 1]){
-                let temps = copie[j];
-                copie[j] = copie[j + 1];
-                copie[j + 1]= temps;
-            }
-        }
-      }
-      return copie;
-}
-console.log(trierAge2(users))
+    return result;
+    }
+    console.log(ajouterstatus(users))
+
+
+
 
