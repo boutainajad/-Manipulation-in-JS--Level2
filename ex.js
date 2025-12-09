@@ -61,30 +61,48 @@ const users = [
 // }
 // console.log(trierAge2(users))
 
-// 3. Ajouter une propriété status: "active" à chaque utilisateur
+// // 3. Ajouter une propriété status: "active" à chaque utilisateur
+// // A 
+
+// const status1 = users.map(user => ({...user , status : "Active"}));
+// console.log(status1)
+
+// // B 
+
+// function ajouterstatus(users){ 
+//     const result =[];
+//     for (let i= 0; i < users.length; i++ ){
+//         let newUser = {};
+//         newUser.id = users[i].id;
+//         newUser.name = users[i].name;
+//         newUser.age = users[i].age;
+//         newUser.city = users[i].city;
+//         newUser.score = users[i].score;
+//         newUser.status = "Active";
+//         result[i] = newUser;
+//     }
+//     return result;
+//     }
+//     console.log(ajouterstatus(users))
+
+// 4. Créer un tableau contenant uniquement les objets {name, score}
 // A 
 
-const status1 = users.map(user => ({...user , status : "Active"}));
-console.log(status1)
+const tab = users.map(user => ({user: user.name, score : user.score}))
+console.log(tab)
 
 // B 
-
-function ajouterstatus(users){ 
-    const result =[];
-    for (let i= 0; i < users.length; i++ ){
-        let newUser = {};
-        newUser.id = users[i].id;
-        newUser.name = users[i].name;
-        newUser.age = users[i].age;
-        newUser.city = users[i].city;
-        newUser.score = users[i].score;
-        newUser.status = "Active";
-        result[i] = newUser;
-    }
-    return result;
-    }
-    console.log(ajouterstatus(users))
-
+function tableau(users){
+  const result = [];
+  for (let i = 0; i < users.length ; i++){
+    let newUser = {};
+    newUser.name = users[i].name;
+    newUser.score= users[i].score;
+    result[i] = newUser;
+  }
+  return result;
+}
+console.log(tableau(users));
 
 
 
