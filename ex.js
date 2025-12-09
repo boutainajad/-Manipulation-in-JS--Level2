@@ -85,24 +85,49 @@ const users = [
 //     }
 //     console.log(ajouterstatus(users))
 
-// 4. Créer un tableau contenant uniquement les objets {name, score}
+// // 4. Créer un tableau contenant uniquement les objets {name, score}
+// // A 
+
+// const tab = users.map(user => ({user: user.name, score : user.score}))
+// console.log(tab)
+
+// // B 
+// function tableau(users){
+//   const result = [];
+//   for (let i = 0; i < users.length ; i++){
+//     let newUser = {};
+//     newUser.name = users[i].name;
+//     newUser.score= users[i].score;
+//     result[i] = newUser;
+//   }
+//   return result;
+// }
+// console.log(tableau(users));
+
+// 5. Récupérer la liste des villes sans doublons
 // A 
+let userCity = users.map(user => user.city);
+let city = [... new Set(userCity)];
+console.log(city)
 
-const tab = users.map(user => ({user: user.name, score : user.score}))
-console.log(tab)
-
-// B 
-function tableau(users){
-  const result = [];
-  for (let i = 0; i < users.length ; i++){
-    let newUser = {};
-    newUser.name = users[i].name;
-    newUser.score= users[i].score;
-    result[i] = newUser;
+// b 
+function villesDoublons(users) {
+  const resultat = [];
+  
+  for (let i = 0; i < users.length; i++) {
+    let dejaVu = 0;
+    
+    for (let j = 0; j < i; j++) {
+      if (users[j].city === users[i].city) {
+        dejaVu = 1;
+      }
+    }
+    
+    if (dejaVu === 0) {
+      resultat[resultat.length] = users[i].city;
+    }
   }
-  return result;
+  
+  return resultat;
 }
-console.log(tableau(users));
-
-
-
+console.log(villesDoublons(users));
