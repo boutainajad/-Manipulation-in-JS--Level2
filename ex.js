@@ -104,30 +104,65 @@ const users = [
 // }
 // console.log(tableau(users));
 
-// 5. Récupérer la liste des villes sans doublons
-// A 
-let userCity = users.map(user => user.city);
-let city = [... new Set(userCity)];
-console.log(city)
+// // 5. Récupérer la liste des villes sans doublons
+// // A 
+// let userCity = users.map(user => user.city);
+// let city = [... new Set(userCity)];
+// console.log(city)
 
-// b 
-function villesDoublons(users) {
-  const resultat = [];
+// // b 
+// function villesDoublons(users) {
+//   const resultat = [];
   
-  for (let i = 0; i < users.length; i++) {
-    let dejaVu = 0;
+//   for (let i = 0; i < users.length; i++) {
+//     let dejaVu = 0;
     
-    for (let j = 0; j < i; j++) {
-      if (users[j].city === users[i].city) {
-        dejaVu = 1;
-      }
+//     for (let j = 0; j < i; j++) {
+//       if (users[j].city === users[i].city) {
+//         dejaVu = 1;
+//       }
+//     }
+    
+//     if (dejaVu === 0) {
+//       resultat[resultat.length] = users[i].city;
+//     }
+//   }
+  
+//   return resultat;
+// }
+// console.log(villesDoublons(users));
+
+// 6. Trouver l’utilisateur ayant le score le plus proche de 50
+// A 
+const plusProche= users.reduce((closest, user) => {
+  const Actuelle = Math.abs(user.score - 50);
+  const Closest = Math.abs(closest.score - 50);
+  
+  if (Actuelle < Closest) {
+    return user;
+  }
+  return closest;
+});
+
+console.log(plusProche);
+
+// B
+function plusproche(users){
+  let proche = users[0];
+  let min = users[0].score - 50;
+  if (min < 0){
+    min = -min;
+  }
+  for (let i = 1; i < users.length; i++){
+    let dist = users[i].score - 50;
+    if (dist < 0){
+      dist = -dist
     }
-    
-    if (dejaVu === 0) {
-      resultat[resultat.length] = users[i].city;
+    if (dist < min){
+      min = dist;
+      proche = users[i]; 
     }
   }
-  
-  return resultat;
+  return proche
 }
-console.log(villesDoublons(users));
+console.log(plusproche(users))
